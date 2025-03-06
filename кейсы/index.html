@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Крутка Кейсов</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Скрытая кнопка для админ-панели -->
+        <button id="adminButton" class="admin-button">⚙️</button>
+
+        <h1>Крутка Кейсов</h1>
+        <div class="balance">Баланс: <span id="balance">0</span> грiвень</div>
+
+        <!-- Выбор кейса -->
+        <div class="case-selector">
+            <button id="appleCaseButton" class="case-button">Яблочный кейс</button>
+            <button id="burgerCaseButton" class="case-button">Бургерный кейс</button>
+        </div>
+
+        <div class="case-display" id="caseDisplay">
+            <img src="default.png" alt="Кейс" id="caseImage">
+        </div>
+        <button id="spinButton">Открыть кейс (10 грiвень)</button>
+        <div class="result" id="result"></div>
+        <div class="actions" id="actions" style="display: none;">
+            <button id="sellButton">Продать (<span id="sellPrice">0</span> грiвень)</button>
+            <button id="toInventoryButton">В инвентарь</button>
+        </div>
+        <button id="depositButton">Пополнить баланс</button>
+        <button id="openInventoryButton">Инвентарь</button>
+
+        <!-- Окно ввода данных карты -->
+        <div id="cardModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Введите данные карты</h2>
+                <input type="text" id="cardNumber" placeholder="Номер карты" maxlength="16">
+                <input type="text" id="cardExpiry" placeholder="Срок действия (MM/YY)" maxlength="5">
+                <input type="text" id="cardCVC" placeholder="CVC код" maxlength="3">
+                <input type="text" id="cardName" placeholder="Имя Фамилия (латиницей)">
+                <button id="cardSubmit">Готово</button>
+            </div>
+        </div>
+
+        <!-- Окно пополнения баланса -->
+        <div id="depositModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Пополнение баланса</h2>
+                <input type="number" id="depositAmount" placeholder="Введите сумму" min="1">
+                <button id="confirmDeposit">Пополнить</button>
+            </div>
+        </div>
+
+        <!-- Окно инвентаря -->
+        <div id="inventoryModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Инвентарь</h2>
+                <div id="inventoryItems" class="inventory-scroll"></div>
+            </div>
+        </div>
+
+        <!-- Админ-панель -->
+        <div id="adminPanel" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Выбор предметов</h2>
+                <div class="admin-items">
+                    <h3>Яблочный кейс</h3>
+                    <button onclick="addItemToInventory('Обычное яблоко')">Обычное яблоко</button>
+                    <button onclick="addItemToInventory('Редкое яблоко')">Редкое яблоко</button>
+                    <button onclick="addItemToInventory('Мифическое яблоко')">Мифическое яблоко</button>
+                    <button onclick="addItemToInventory('Легендарное яблоко')">Легендарное яблоко</button>
+                    <h3>Бургерный кейс</h3>
+                    <button onclick="addItemToInventory('Бургер')">Бургер</button>
+                    <button onclick="addItemToInventory('Чизбургер')">Чизбургер</button>
+                    <button onclick="addItemToInventory('Биг-Хит')">Биг-Хит</button>
+                    <button onclick="addItemToInventory('Воппер')">Воппер</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
